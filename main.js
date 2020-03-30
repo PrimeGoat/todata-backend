@@ -1,21 +1,66 @@
 /********************
  * HELPER FUNCTIONS *
  ********************/
-const getTodoName = function() {}
-const getPriority = function() {}
-const isComplete = function() {}
-const isHighPriority = function() {}
+const getTodoName = function(entry) {
+  return entry.text;
+}
+
+const getPriority = function(entry) {
+  return entry.priority;
+}
+
+const isComplete = function(entry) {
+  return entry.complete;
+}
+
+const isHighPriority = function(entry) {
+  return entry.priority > 1;
+}
 
 /***********************
  * ITERATION FUNCTIONS *
  ***********************/
-const names = function() {}
-const priorities = function() {}
-const namesAndPriorities = function() {}
-const justNotComplete = function() {}
-const justComplete = function() {}
-const priority2Only = function() {}
-const priority1Only = function() {}
+const names = function(agenda) {
+  let out = [];
+  for(entry of agenda) {
+    out.push(entry.text);
+  }
+  return out;
+}
+
+const priorities = function(agenda) {
+  let out = [];
+  for(entry of agenda) {
+    out.push(entry.priority);
+  }
+  return out;
+}
+
+const namesAndPriorities = function(agenda) {
+  let out = [];
+
+  for(entry of agenda) {
+    out.push(entry.text + ' - ' + ((entry.priority == 1) ? 'Low' : 'High'));
+  }
+
+  return out;
+}
+
+const justNotComplete = function(agenda) {
+  return agenda.filter(entry => !entry.complete);
+}
+
+const justComplete = function(agenda) {
+  return agenda.filter(entry => entry.complete);
+}
+
+const priority2Only = function(agenda) {
+  return agenda.filter(entry => entry.priority == 2);
+}
+
+const priority1Only = function(agenda) {
+  return agenda.filter(entry => entry.priority == 1);
+}
 
 
 module.exports = {
